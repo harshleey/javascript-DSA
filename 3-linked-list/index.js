@@ -1,13 +1,13 @@
 // Node
 class Node {
   constructor(value) {
-    // Depiction of what a Node head is like
+    // Depiction of what each Node is like (i.e a data and the reference to the next data or null)
     this.data = value;
     this.next = null;
   }
 }
 
-// LinkedList
+// LinkedList (A list of Nodes)
 class LinkedList {
   constructor(value) {
     this.head = new Node(value);
@@ -15,12 +15,13 @@ class LinkedList {
     this.length = 1; // usually starts at 1 since we already created one node
   }
 
+  // The new Node will be the tail
   push(value) {
     let newNode = new Node(value);
     // this.head → points to the first node in the linked list. So this condition checks whether the list is currently empty.
     // !this.head → means “there is no head” (so the value is null or undefined).
     if (!this.head) {
-      // If the list has no nodes yet (this.head is null), then the new node becomes both the head and the tail:
+      // If the list has no nodes yet (i.e this.head is null), then the new node becomes both the head and the tail:
       this.head = newNode;
       this.tail = this.head;
     }
@@ -258,6 +259,24 @@ class LinkedList {
     this.head = null;
     this.tail = null;
     this.length = 0;
+  }
+
+  reverse() {
+    //    Create 3 pointers
+
+    let temp = this.head; // Points to the first node
+    this.head = this.tail; // Pointing the head to tail
+    this.tail = temp; // Pointing to temp
+
+    let next = temp; // Points to head
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
   }
 }
 
