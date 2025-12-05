@@ -25,9 +25,12 @@ class MyArray {
     const firstItem = this.data[0];
     delete this.data[0];
     for (let i = 0; i < this.length; i++) {
+      console.log(this.data[i]);
+      // Moving from left to right from the first data
       this.data[i] = this.data[i + 1];
     }
     this.length--;
+    console.log("Last:", this.data[this.length]);
     delete this.data[this.length];
     return firstItem;
   }
@@ -35,6 +38,7 @@ class MyArray {
   deleteByIndex(index) {
     const item = this.data[index];
     for (let i = index; i < this.length; i++) {
+      // Moving from left to right from the index's data
       this.data[i] = this.data[i + 1];
     }
     this.length--;
@@ -49,11 +53,12 @@ myNewArray.push("yellow");
 myNewArray.push("pink");
 myNewArray.push("apple");
 myNewArray.push("cup");
+console.log(myNewArray);
 // console.log(myNewArray.data);
 // console.log(myNewArray.get(0));
 // myNewArray.pop();
-console.log(myNewArray);
+console.log(myNewArray.shift());
 // myNewArray.shift();
-// console.log(myNewArray);
+console.log(myNewArray);
 // console.log(myNewArray.deleteByIndex(2));
 // console.log(myNewArray);
